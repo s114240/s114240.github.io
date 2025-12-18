@@ -6,6 +6,115 @@
     <link rel="icon" href="ghost.png">
   </head>
   <body>
-  
+  <!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高中生段考心理狀態</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .btn-group button {
+      margin: 8px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #4a90e2;
+      color: white;
+    }
+    .btn-group button:hover {
+      background-color: #357ab8;
+    }
+    #result {
+      margin-top: 35px;
+      font-size: 22px;
+      font-weight: bold;
+      min-height: 140px;
+    }
+    .meme-img {
+      margin-top: 12px;
+      width: 300px;
+      border-radius: 10px;
+    }
+    .meme-small {
+      width: 220px;
+      margin-top: 8px;
+      border-radius: 8px;
+    }
+    .big-study {
+      width: 280px; /* 放大努力自學中的梗圖 */
+    }
+    .side-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      align-items: flex-start;
+      margin-top: 12px;
+    }
+    .side-item div.title {
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>請問你想看到哪一時期的狀態？</h1>
+
+  <div class="btn-group">
+    <button onclick="showState('before')">段考前</button>
+    <button onclick="showState('during')">段考時</button>
+    <button onclick="showState('after')">段考後</button>
+  </div>
+
+  <img id="top-meme" src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/oEhin5UbA7AE9BwFiAM05ZSsDwIMsGPvAAIaw~tplv-dy-aweme-images:q75.webp?biz_tag=aweme_images&from=327834062&lk3s=138a59ce&s=PackSourceEnum_SEARCH&sc=image&se=false&x-expires=1767949200&x-signature=BPWRPxNTlGEuGJhpfTjtfPFoazY%3D" alt="question meme" class="meme-img">
+
+  <div id="result"></div>
+
+  <script>
+    function showState(period) {
+      const result = document.getElementById("result");
+      result.innerHTML = ""; // 清空
+
+      const topMeme = document.getElementById("top-meme");
+      if (topMeme) topMeme.style.display = "none";
+
+      if (period === "before") {
+        result.innerHTML = `
+          <div class="side-container">
+            <div class="side-item">
+              <div class="title">努力自學中</div>
+              <img class='meme-small big-study' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTESeACfaMKqRrJRTtjaq8oNM9-Znbx9M3pog&s' alt='努力自學中'>
+            </div>
+            <div class="side-item">
+              <div class="title">懷疑人生</div>
+              <img class='meme-small' style='margin-top:0;' src='https://memeprod.ap-south-1.linodeobjects.com/user-template/7a089306962a82b0b7ec0ff1673a4d5f.png' alt='懷疑人生'>
+            </div>
+          </div>`;
+      } else if (period === "during") {
+        result.innerHTML = `<img class='meme-img' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaH3q9NVBWZ7a6Fm4v6xcPRfoqw7sLwEg0ww&s' alt='段考時'>`;
+      } else if (period === "after") {
+        const messages = ["我想休學", "我下次段考一定會認真讀書"];
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        if (randomMsg === "我想休學") {
+          result.innerHTML = `${randomMsg}<br><img class='meme-img' src='https://stickershop.line-scdn.net/stickershop/v1/product/30623323/LINEStorePC/main.png?v=1' alt='我想休學'>`;
+        } else {
+          result.innerHTML = `${randomMsg}<br><img class='meme-img' src='https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1633175510371.jpg' alt='我下次段考一定會認真讀書'>`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
+
   </body>
 </html>
